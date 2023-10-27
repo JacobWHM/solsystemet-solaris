@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(90deg, #0C164D 0%, #190B22 100%);
+
+}
+.undertext{
+    font-weight: bolder;
+    color: #b89106;
+    width: 625px;
+    height: 25px;
+font-family: Lora;
+}
+.overtext{
+    font-weight: bolder;
+    color: #ffff;
+    width: 625px;
+    height: 60px;
+    font-family: Secular One;
+
+
+}
+
+.Solarsystemttext{
+    margin: auto;
+   text-align: right;
+   float: right;
+   padding-left: 747px;
+   padding-top: 72px;
+   
+
+}
