@@ -29,8 +29,10 @@ font-family: Lora;
     margin: auto;
    text-align: right;
    float: right;
-   padding-left: 747px;
-   padding-top: 72px;
-   
+   width: 625px;
+   height: 121px;
+   margin-top: 72px;
+   margin-left: 747px;
+   margin-right: 30px;
 
 }
