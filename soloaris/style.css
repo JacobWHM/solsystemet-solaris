@@ -6,6 +6,7 @@
 
 body{
     background: linear-gradient(90deg, #0C164D 0%, #190B22 100%);
+ display: flex;
 
 }
 .undertext{
@@ -35,4 +36,9 @@ font-family: Lora;
    margin-left: 747px;
    margin-right: 30px;
 
+}
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    place-content: start;
 }
