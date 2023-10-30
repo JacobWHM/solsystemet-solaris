@@ -1,14 +1,18 @@
 body{
     display: grid;
     background: linear-gradient(90deg, #0C164D 0%, #190B22 100%);
+    height: 100vh;
 }
 
 .flex-container{
 flex-direction: column;
 align-items: center;
 margin-top: 10px;
+height: 100vh;
+
 
 }
+
 .undertext{
     font-weight: bolder;
     color: #b89106;
