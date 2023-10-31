@@ -1,43 +1,31 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
-    display: grid;
     background: linear-gradient(90deg, #0C164D 0%, #190B22 100%);
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+}
+.planets{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
     height: 100vh;
 }
-
-.flex-container{
-flex-direction: column;
-align-items: center;
-margin-top: 10px;
-height: 100vh;
-
-
+.texten{
+    text-align: right;
+    margin-top: 72px;
+  
 }
 
-.undertext{
-    font-weight: bolder;
-    color: #b89106;
-    width: 625px;
-    height: 25px;
-font-family: Lora;
+.sun{
+ text-align: start;
+ display: flex;
+ justify-content: left;
+ height: 100vh;
 }
-.overtext{
-    font-weight: bolder;
-    color: #ffff;
-    width: 625px;
-    height: 60px;
-    font-family: Secular One;
-
-
-}
-
-.Solarsystemttext{
-    margin: auto;
-   text-align: right;
-   float: right;
-   width: 625px;
-   height: 121px;
-   margin-top: 72px;
-   margin-left: 747px;
-   margin-right: 29px;
-
-}
+    
