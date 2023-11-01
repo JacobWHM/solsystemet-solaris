@@ -10,22 +10,22 @@ body{
     height: 100vh;
     background-size: cover;
 }
-.planets{
-    display: flex;
-    justify-content:center ;
-    align-items: center;
-    height: 100vh;
-}
+
 .texten{
-    text-align: right;
-    margin-top: 72px;
-  
+    text-align: end;
+    place-self: right;
+   
 }
 
-.sun{
- text-align: start;
- display: flex;
- justify-content: left;
- height: 100vh;
+
+
+.flex-container{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+margin-right: 375px;
+margin-bottom: 100px;
+    
 }
     
