@@ -12,8 +12,10 @@ body{
 }
 
 .texten{
-    text-align: end;
-    place-self: right;
+ display: flex;
+ flex-direction: column;
+ place-items: end;
+   
    
 }
 
@@ -40,8 +42,38 @@ margin-bottom: 100px;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(238, 235, 235, 0.7);
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
   }
+  .popup__content {
+    margin: 25% auto;
+    padding: 1.3rem;
+    background: #fff;
+    border-radius: 0.6rem;
+    width: 30%;
+    position: relative;
+    transition: all 1s ease-in-out;
+    color: white;
+    background: linear-gradient(90deg, #0C164D 0%, #190B22 100%);
+  }
+  #overlay:target {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .popup {
+    background: linear-gradient(90deg, #0C164D 0%, #190B22 100%);
+
+  }
+
+  .popup-area {
+    width: 40%;
+
+    
+  
+  }
+  
+  
+  

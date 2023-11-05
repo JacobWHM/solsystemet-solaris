@@ -1,5 +1,9 @@
 
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector("#overlay");
+
 //get data
+
 
 
 const fetchData = async () => {
