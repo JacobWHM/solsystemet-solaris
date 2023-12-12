@@ -11,10 +11,12 @@ body{
     background-size: cover;
 }
 
+
 .texten{
  display: flex;
  flex-direction: column;
  place-items: end;
+ color: white;
    
    
 }
@@ -30,8 +32,6 @@ margin-right: 375px;
 margin-bottom: 100px;
     
 }
-
-
   
   .solarsystem-overlay {
     background-color: #000;

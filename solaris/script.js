@@ -54,18 +54,11 @@ function displayPlanets(planets) {
 }
 
 function renderSolarSystemToUI() {
-  // gå igenom alla himlakroppar i listan
   solarSystem.forEach(planet => {
-      // för varje himlakropp ska vi skapa ett nytt html-element åt den så vi kan se den!
-      // nya elementet (som just nu bara finns i js)
       let bodyEl = document.createElement('section');
-      // lägg in nya elementet i vår befintliga html
       flex-container.appendChild(bodyEl);
-      // hitta tillhörande svg till himlakroppen
       let svgObj = solarSystemSVGs[planet.id];
-      // lägga in tillhörande svg i det nya elementet
       bodyEl.innerHTML = `${svgObj.path}`;
-      // lägga på en eventlyssnare på varje himlakropps yttersta html-element
       bodyEl.addEventListener("click", () => {
           openOverlay(planet);
       });
@@ -73,17 +66,11 @@ function renderSolarSystemToUI() {
 };
 
 function openOverlay(planet) {
-  // ta fram planetens svg-objekt i listan över svg:er
   let svgObj = solarSystemSVGs[planet.id];
-  // ta fram enbart svg-koden för overlay till planeten
   let svgCode = svgObj.overlaypath;
-  // få tag på overlay-elementeti UI't
   let overlayEl = document.querySelector(".solarsystem-overlay");
-  // visa vår overlay mha display-propertyn i css
-  overlayEl.style.display = "block";
-  // lägga in svg:n i overlayen
-  overlayEl.innerHTML = `
-  
+  overlayEl.style.display = "block";  
+  overlayEl.innerHTML = planet;
   ${svgCode}
   <section class="${planet.name}">
       <h1>${planet.name}</h1>
@@ -92,17 +79,12 @@ function openOverlay(planet) {
           <p class="body-type">${body.type}</p>
       </section>
   </section>
-  
   `;
-  // dölja main-vyn
   solarSystemContainer.style.display = "none";
-  // skapa knapp-element
   let closeBtn = document.createElement("button");
   closeBtn.innerHTML = "x";
   closeBtn.addEventListener("click", () => {
-      // dölja overlay
       overlayEl.style.display = "none";
-      // visa main-vyn
       solarSystemContainer.style.display = "flex";
   });
   overlayEl.appendChild(closeBtn);
