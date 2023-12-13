@@ -45,3 +45,11 @@ margin-bottom: 100px;
     border-radius: 4px;
 }
   
+.solarsystem-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.solarsystem-container > section {
+    align-self: center;
+    margin-right: 3rem;
+}
