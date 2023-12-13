@@ -59,17 +59,28 @@ function displayPlanets(planets) {
   });
 }
 
+<<<<<<< HEAD
 async function getSolarSystem() {
   // här hämtar vi solsytemet från API:et
   let resp = await fetch(API_URL);
   // stoppar in svaret i variabeln solarSystem
   solarSystem = await resp.json();
+=======
+
+
+async function getSolarSystem() {
+  // här hämtar vi solsytemet från API:et
+  fetch("https://majazocom.github.io/Data/solaris.json")
+  // stoppar in svaret i variabeln solarSystem
+  getSolarSystem = await resp.json();
+>>>>>>> 42af87f2c4c79b7b064f010e4e5d6b56b91a4cbb
   // hämta våra svg:s
   let svgresp = await fetch(SVGAPI_URL);
   // stoppa in svaret i variabeln solarSystemSVGs
   solarSystemSVGs = await svgresp.json();
   // skapa gränssnitt så vi kan se våra himlakroppar
   renderSolarSystemToUI();
+<<<<<<< HEAD
 };
 
 function renderSolarSystemToUI() {
@@ -89,6 +100,8 @@ function renderSolarSystemToUI() {
           openOverlay(body);
       });
   });
+=======
+>>>>>>> 42af87f2c4c79b7b064f010e4e5d6b56b91a4cbb
 };
 
 function openOverlay(body) {
@@ -126,7 +139,5 @@ function openOverlay(body) {
   });
   overlayEl.appendChild(closeBtn);
 };
-
-window.addEventListener("load", getSolarSystem);
 
 
