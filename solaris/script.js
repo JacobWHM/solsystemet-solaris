@@ -4,9 +4,7 @@ const overlay = document.querySelector("#overlay");
 const API_URL = "https://majazocom.github.io/Data/solaris.json";
 const SVGAPI_URL = "https://majazocom.github.io/Data/solarissvgs.json";
 // global variabel för våra himlakroppar
-let solarSystem = [];
-// global variabel för svg:erna
-let solarSystemSVGs = [];
+
 // html-elementet där vårt solsystem ska ligga
 const solarSystemContainer = document.querySelector(".solarsystem-container");
 
@@ -17,7 +15,7 @@ const fetchData = async () => {
     const response = await fetch(
       "https://majazocom.github.io/Data/solaris.json"
     );
-
+                                             
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -51,7 +49,9 @@ function displayPlanets(planets) {
     const listItem = document.createElement("li");
     const button = document.createElement("button");
     button.textContent = "Get Info";
-    button.addEventListener("click", () => displayPlanets(planet));
+    
+    // Use a separate function to handle the click event
+    button.addEventListener("click", () => displayPlanetInfo(planet));
 
     listItem.textContent = planet.name;
     listItem.appendChild(button);
@@ -59,23 +59,79 @@ function displayPlanets(planets) {
   });
 }
 
+// Separate function to display planet information
+function displayPlanetInfo(planet) {
+  // Modify this function to display information about the clicked planet
+  console.log("Planet Info:", planet);
+  // You can update this function to show a modal, update UI, etc.
+}
 
 
+
+
+// Declare global variables
+let solarSystem = [];
+let solarSystemSVGs = [];
 
 async function getSolarSystem() {
-  // här hämtar vi solsytemet från API:et
-  fetch("https://majazocom.github.io/Data/solaris.json")
-  // stoppar in svaret i variabeln solarSystem
-  getSolarSystem = await resp.json();
+  try {
+    // Fetch solar system data
+    const resp = await fetch("https://majazocom.github.io/Data/solaris.json");
+    
+    if (!resp.ok) {
+      throw new Error("Network response was not ok");
+    }
 
-  // hämta våra svg:s
-  let svgresp = await fetch(SVGAPI_URL);
-  // stoppa in svaret i variabeln solarSystemSVGs
-  solarSystemSVGs = await svgresp.json();
-  // skapa gränssnitt så vi kan se våra himlakroppar
-  renderSolarSystemToUI();
+    // Parse the JSON response and store it in the global variable solarSystem
+    solarSystem = await resp.json();
 
-};
+    // Fetch SVG data
+    const svgResp = await fetch("https://majazocom.github.io/Data/solaris.json");
+    
+    if (!svgResp.ok) {
+      throw new Error("Network response for SVGs was not ok");
+    }
+
+    // Parse the SVG JSON response and store it in the global variable solarSystemSVGs
+    solarSystemSVGs = await svgResp.json();
+
+    // Render the solar system data to the UI using the fetched data
+    renderSolarSystemToUI();
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+  }
+}
+
+// Call the function to initiate the process
+getSolarSystem();
+
+function renderSolarSystemToUI() {
+  // Loop through all celestial bodies in the solar system
+  solarSystem.forEach(body => {
+    // Create a new HTML element for each celestial body
+    let bodyEl = document.createElement('section');
+
+    // Find the corresponding SVG for the celestial body
+    let svgObj = solarSystemSVGs[body.id];
+
+    // Add the SVG to the new element
+    bodyEl.innerHTML = `${svgObj.path}`;
+
+    // Add a click event listener to each celestial body element
+    bodyEl.addEventListener("click", () => {
+      openOverlay(body);
+    });
+
+    // Append the new element to the document body
+    document.body.appendChild(bodyEl);
+  });
+}
+
+function openOverlay(body) {
+  // Modify this function to display information about the clicked celestial body
+  console.log("Clicked on:", body);
+  // You can update this function to show a modal, update UI, etc.
+}
 
 function renderSolarSystemToUI() {
   // gå igenom alla himlakroppar i listan
@@ -97,40 +153,16 @@ function renderSolarSystemToUI() {
 
 };
 
-function openOverlay(body) {
-  // ta fram planetens svg-objekt i listan över svg:er
-  let svgObj = solarSystemSVGs[body.id];
-  // ta fram enbart svg-koden för overlay till planeten
-  let svgCode = svgObj.overlaypath;
-  // få tag på overlay-elementeti UI't
-  let overlayEl = document.querySelector(".solarsystem-overlay");
-  // visa vår overlay mha display-propertyn i css
-  overlayEl.style.display = "block";
-  // lägga in svg:n i overlayen
-  overlayEl.innerHTML = `
-  
-  ${svgCode}
-  <section class="${body.name}">
-      <h1>${body.name}</h1>
-      <h2>${body.latinName}</h2>
-      <section class="body-info-container">
-          <p class="body-type">${body.type}</p>
-      </section>
-  </section>
-  
-  `;
-  // dölja main-vyn
-  solarSystemContainer.style.display = "none";
-  // skapa knapp-element
-  let closeBtn = document.createElement("button");
-  closeBtn.innerHTML = "x";
-  closeBtn.addEventListener("click", () => {
-      // dölja overlay
-      overlayEl.style.display = "none";
-      // visa main-vyn
-      solarSystemContainer.style.display = "flex";
-  });
-  overlayEl.appendChild(closeBtn);
-};
 
-
+ 
+  function displayPlanetInfo(planet) {
+    // Open the modal or overlay
+    const modal = document.querySelector(".modal");
+    const modalContent = document.getElementById("modalContent");
+  
+    // Update the modal content with information about the clicked planet
+    modalContent.textContent = `Planet Info:\nName: ${planet.name}\nDetails: ${planet.info}`;
+  
+    // Display the modal
+    modal.style.display = "flex";
+  }
