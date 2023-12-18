@@ -3,7 +3,7 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector("#overlay");
 const API_URL = "https://majazocom.github.io/Data/solaris.json";
 const SVGAPI_URL = "https://majazocom.github.io/Data/solarissvgs.json";
-// global variabel för våra himlakroppar
+
 
 // html-elementet där vårt solsystem ska ligga
 const solarSystemContainer = document.querySelector(".solarsystem-container");
@@ -105,33 +105,7 @@ async function getSolarSystem() {
 // Call the function to initiate the process
 getSolarSystem();
 
-function renderSolarSystemToUI() {
-  // Loop through all celestial bodies in the solar system
-  solarSystem.forEach(body => {
-    // Create a new HTML element for each celestial body
-    let bodyEl = document.createElement('section');
 
-    // Find the corresponding SVG for the celestial body
-    let svgObj = solarSystemSVGs[body.id];
-
-    // Add the SVG to the new element
-    bodyEl.innerHTML = `${svgObj.path}`;
-
-    // Add a click event listener to each celestial body element
-    bodyEl.addEventListener("click", () => {
-      openOverlay(body);
-    });
-
-    // Append the new element to the document body
-    document.body.appendChild(bodyEl);
-  });
-}
-
-function openOverlay(body) {
-  // Modify this function to display information about the clicked celestial body
-  console.log("Clicked on:", body);
-  // You can update this function to show a modal, update UI, etc.
-}
 
 function renderSolarSystemToUI() {
   // gå igenom alla himlakroppar i listan
