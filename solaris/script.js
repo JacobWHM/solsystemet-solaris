@@ -166,3 +166,30 @@ function renderSolarSystemToUI() {
     // Display the modal
     modal.style.display = "flex";
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Your existing code...
+  
+    // ...
+  
+    // Add this at the end of your script.js file
+  
+    // Close the modal when the close button is clicked
+    const closeButton = document.querySelector(".close");
+    const overlay = document.querySelector("#overlay");
+  
+    if (closeButton) {
+      closeButton.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    }
+  
+    // Close the modal when clicking outside the modal content
+    if (overlay) {
+      overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+          modal.style.display = "none";
+        }
+      });
+    }
+  });
