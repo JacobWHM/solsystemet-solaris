@@ -49,6 +49,7 @@ margin-bottom: 100px;
 .solarsystem-container {
     display: flex;
     flex-wrap: wrap;
+    
 }
 .solarsystem-container > section {
     align-self: center;

@@ -52,6 +52,8 @@ function displayPlanets(planets) {
     
     // Use a separate function to handle the click event
     button.addEventListener("click", () => displayPlanetInfo(planet));
+  
+
 
     listItem.textContent = planet.name;
     listItem.appendChild(button);
