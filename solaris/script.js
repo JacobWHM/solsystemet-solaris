@@ -6,7 +6,7 @@ const SVGAPI_URL = "https://majazocom.github.io/Data/solarissvgs.json";
 
 
 // html-elementet där vårt solsystem ska ligga
-const solarSystemContainer = document.querySelector(".solarsystem-container");
+const solarSystemContainer = document.querySelector(".flex-container");
 
 
 //get data
@@ -15,7 +15,7 @@ const fetchData = async () => {
     const response = await fetch(
       "https://majazocom.github.io/Data/solaris.json"
     );
-                                             
+
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -38,8 +38,8 @@ function fetchPlanets() {
     .then((data) => {
       console.log(data);
       // step 2 send the data to the funtion the display the button and the list
-      
-    displayPlanets(data); 
+
+      displayPlanets(data);
     });
 }
 function displayPlanets(planets) {
@@ -49,11 +49,13 @@ function displayPlanets(planets) {
     const listItem = document.createElement("li");
     const button = document.createElement("button");
     button.textContent = "Get Info";
-    
-    // Use a separate function to handle the click event
-    button.addEventListener("click", () => displayPlanetInfo(planet));
-  
-  
+
+    // Use a function to create a new scope and capture the current value of planet
+    button.addEventListener('click', (function (currentPlanet) {
+      return function () {
+        displayPlanetInfo(currentPlanet);
+      };
+    })(planet));
 
     listItem.textContent = planet.name;
     listItem.appendChild(button);
@@ -61,11 +63,13 @@ function displayPlanets(planets) {
   });
 }
 
+
 // Separate function to display planet information
 function displayPlanetInfo(planet) {
   // Modify this function to display information about the clicked planet
   console.log("Planet Info:", planet);
   // You can update this function to show a modal, update UI, etc.
 }
+
 
 
