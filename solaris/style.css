@@ -33,8 +33,11 @@ margin-right: 375px;
 margin-bottom: 100px;
     
 }
-  
 
-.modal{
-    color: red;
+#planetList{
+align-items: center;
+display: flex;
+justify-content: center;
+
+
 }

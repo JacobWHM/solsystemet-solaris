@@ -25,9 +25,10 @@ const fetchData = async () => {
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
+  
 };
 
-fetchData();
+fetchPlanets();
 
 
 // get the infromation about the planets
@@ -37,11 +38,13 @@ function fetchPlanets() {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+      
       // step 2 send the data to the funtion the display the button and the list
 
       displayPlanets(data);
     });
 }
+
 function displayPlanets(planets) {
   const planetList = document.getElementById("planetList");
 
