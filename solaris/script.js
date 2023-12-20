@@ -63,12 +63,29 @@ function displayPlanets(planets) {
     listItem.textContent = planet.name;
     listItem.appendChild(button);
     planetList.appendChild(listItem);
+   
+    const planet_element = document.getElementById("planet"+planet.id);
+    if(planet_element){
+        planet_element.addEventListener('click', (function (currentPlanet) {
+            return function () {
+              displayPlanetInfo(currentPlanet);
+              openPopup();
+            };
+          })(planet));
+    
+    }
+    
+    
+ 
   });
 }
 
 
+   
+
 // Separate function to display planet information
 function displayPlanetInfo(planet) {
+
   // Modify this function to display information about the clicked planet
   console.log("Planet Info:", planet);
   // You can update this function to show a modal, update UI, etc.
@@ -76,3 +93,37 @@ function displayPlanetInfo(planet) {
 
 
 
+function openPopup() {
+  var overlay = document.getElementById("overlay");
+  overlay.style.display = "block";
+}
+
+function closePopup() {
+  var overlay = document.getElementById("overlay");
+  overlay.style.display = "none";
+}
+
+// Add click event listener to the trigger element (e.g., a button)
+function displayPlanetInfo(planet) {
+  const popupTitle = document.querySelector("#overlay h2");
+  const popupContent = document.querySelector("#overlay p");
+
+  // Set the title of the popup
+  popupTitle.textContent = planet.name;
+
+  // Create an unordered list to display information
+  const infoList = document.createElement("ul");
+
+  // Iterate over the properties of the planet object
+  for (const key in planet) {
+    if (planet.hasOwnProperty(key)) {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${key}: ${planet[key]}`;
+      infoList.appendChild(listItem);
+    }
+  }
+
+  // Clear previous content and append the new information list
+  popupContent.innerHTML = '';
+  popupContent.appendChild(infoList);
+}

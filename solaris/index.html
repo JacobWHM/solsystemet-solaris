@@ -13,13 +13,24 @@
     <div class="texten"><h1>solaris</h1></div>
     
    
-    
+    <section id="popup" class="popup_content">
+        <ul id="planetList"></ul>
+        <article id="overlay" class="overlay">
+            <!-- Content of your pop-up goes here -->
+            <h2>Popup Title</h2>
+            <p>This is the popup content. You can add any information or HTML elements here.</p>
+            <button onclick="closePopup()">Close</button>
+        </article>
+    </section>
+</section>
+
   
   
  
  
-   <section id="solarsystem-container"> 
     <ul id="planetList"></ul>
+  
+  </section>
     <div class="flex-container">
         <svg 
        
@@ -53,7 +64,7 @@
         <circle  id="planet1" cx="7" cy="94" r="7" fill="#888888"/>
         <circle id="planet2" cx="90" cy="94" r="13" fill="#E7CDCD"/>
         <circle id="planet3" cx="186" cy="94" r="14" fill="#428ED5"/>
-        <circle id="planet4" onclick="alert('jacob was hear')" cx="277" cy="94" r="7" fill="#EF5F5F"/>
+        <circle id="planet4"  cx="277" cy="94" r="7" fill="#EF5F5F"/>
         <circle id="planet5" cx="467" cy="94" r="94" fill="#E29468"/>
         <circle id="planet6" cx="744" cy="94" r="72" fill="#C7AA72"/>
         <ellipse cx="744" cy="94" rx="109.116" ry="2.75039" transform="rotate(-30 744 94)" fill="white" fill-opacity="0.4"/>
@@ -62,9 +73,9 @@
         </svg>
      
   
-        <article class="overlay">
-       
-      </article>  
+        <article id="#overlay" class="overlay">
+            
+        </article>  
       
   </section>
   <script src="script.js" ></script>
